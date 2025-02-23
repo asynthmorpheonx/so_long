@@ -6,7 +6,7 @@
 /*   By:  mel-mouh < mel-mouh@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 21:01:50 by  mel-mouh         #+#    #+#             */
-/*   Updated: 2025/02/23 13:58:23 by  mel-mouh        ###   ########.fr       */
+/*   Updated: 2025/02/23 15:34:09 by  mel-mouh        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,7 @@
 int		safer_open(char *file_path);
 char **data_splited(char *data_file);
 char	*data_file_parser(int fd);
+void	ft_free(char **str);
+void	iterate_on_map(char **map, int fd);
 
 #endif

@@ -1,4 +1,4 @@
-SRC= so_long.c file_name_parser.c file_data_parser.c
+SRC= so_long.c file_name_parser.c file_data_parser.c iteration_nd_check.c
 CC= cc
 CFLAGS= -Wall -Werror -Wextra -g3
 NAME= so_long
