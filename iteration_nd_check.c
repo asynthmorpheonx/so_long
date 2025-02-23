@@ -6,7 +6,7 @@
 /*   By:  mel-mouh < mel-mouh@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 15:32:18 by  mel-mouh         #+#    #+#             */
-/*   Updated: 2025/02/23 15:33:38 by  mel-mouh        ###   ########.fr       */
+/*   Updated: 2025/02/23 15:40:50 by  mel-mouh        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,14 @@ static int	check_walls(char *data_map, int j)
 		while (data_map[i])
 		{
 			if (data_map[i] != '1')
-			{
-				map_validation_error();
-				return (0);
-			}
+				return (map_validation_error(), 0);
 			i++;
 		}
 	}
 	else
 	{
-		if (data_map[0] != '1' || data_map[ft_strlen(data_map) - 1] != '1')
-		{
-			map_validation_error();
-			return (0);
-		}
+		if (data_map[0] != '1' || data_map[ft_strlen(data_map) - 1] != '1')	
+			return (map_validation_error(), 0);
 	}
 	return (1);
 }
@@ -58,7 +52,7 @@ static int	check_lenght(char **map)
 	while (map[i])
 	{
 		if (ft_strlen(map[i]) != lenght)
-			return (0);
+			return (map_validation_error(), 0);
 		i++;
 	}
 	return (1);
@@ -71,7 +65,6 @@ void	iterate_on_map(char **map, int fd)
 	i = 0;
 	if (!check_lenght(map))
 	{
-		map_validation_error();
 		ft_free(map);
 		close(fd);
 		exit(1);
@@ -80,7 +73,6 @@ void	iterate_on_map(char **map, int fd)
 	{
 		if (!check_walls(map[i], i))
 		{
-			map_validation_error();
 			ft_free(map);
 			close(fd);
 			exit (1);

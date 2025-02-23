@@ -6,7 +6,7 @@
 /*   By:  mel-mouh < mel-mouh@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 20:59:01 by  mel-mouh         #+#    #+#             */
-/*   Updated: 2025/02/23 15:31:58 by  mel-mouh        ###   ########.fr       */
+/*   Updated: 2025/02/23 15:44:06 by  mel-mouh        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,6 @@ void	ft_free(char **str)
 	}
 	free(str);
 }
-
-void	print_data(char **data)
-{
-	int	i;
-
-	i = 0;
-	while (data[i])
-	{
-		printf("\nline %d:\n\t[%s]", i, data[i]);
-		i++;
-	}
-	printf("\n");
-}
-
-
 
 int main(int ac, char **av)
 {
