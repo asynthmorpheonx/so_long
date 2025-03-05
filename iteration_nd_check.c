@@ -3,29 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   iteration_nd_check.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  mel-mouh < mel-mouh@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mel-mouh <mel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 15:32:18 by  mel-mouh         #+#    #+#             */
-/*   Updated: 2025/02/23 15:40:50 by  mel-mouh        ###   ########.fr       */
+/*   Updated: 2025/02/24 15:39:44 by mel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "to_long.h"
 
-static void	map_validation_error(void)
+void	map_validation_error(void)
 {
-	ft_putstr_fd("\t\t\t\t\tError\n", 2);
-	ft_putstr_fd("\t\t\t\tInvalid map detected!\n", 2);
-	ft_putstr_fd("\tPlease ensure the map is properly ", 2);
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd("Invalid map detected!\n", 2);
+	ft_putstr_fd("Please ensure the map is properly ", 2);
 	ft_putstr_fd("formatted and follows all validation rules.\n", 2);
 }
 
-static int	check_walls(char *data_map, int j)
+int	map_row_count(char **map)
 {
 	int	i;
 
 	i = 0;
-	if (j == 0)
+	while (map[i])
+		i++;
+	return (i);
+}
+
+static int	check_walls(char *data_map, int j, int	map_size)
+{
+	int	i;
+
+	i = 0;
+	if (j == 0 || j == map_size)
 	{
 		while (data_map[i])
 		{
@@ -61,8 +71,10 @@ static int	check_lenght(char **map)
 void	iterate_on_map(char **map, int fd)
 {
 	int	i;
+	int	map_size;
 
 	i = 0;
+	map_size = map_row_count(map);
 	if (!check_lenght(map))
 	{
 		ft_free(map);
@@ -71,7 +83,7 @@ void	iterate_on_map(char **map, int fd)
 	}
 	while (map[i])
 	{
-		if (!check_walls(map[i], i))
+		if (!check_walls(map[i], i, map_size))
 		{
 			ft_free(map);
 			close(fd);
@@ -79,4 +91,5 @@ void	iterate_on_map(char **map, int fd)
 		}
 		i++;
 	}
+	check_for_elements(map);
 }

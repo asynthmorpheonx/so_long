@@ -1,13 +1,14 @@
-SRC= so_long.c file_name_parser.c file_data_parser.c iteration_nd_check.c
+SRC= so_long.c file_name_parser.c file_data_parser.c iteration_nd_check.c \
+	iteration_help_utils.c
 CC= cc
-CFLAGS= -Wall -Werror -Wextra -g3
+CFLAGS= -Wall -Werror -Wextra  -Imlx_linux -g3
 NAME= so_long
 LIBFT= libft.a
 
 all: $(NAME)
 
 $(NAME): $(LIBFT)
-	$(CC) $(CFLAGS) $(SRC) -L./libft -lft -o $(NAME)
+	$(CC) $(CFLAGS) $(SRC) -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -L./libft -lft -o $(NAME)
 
 $(LIBFT):
 	make -C libft bonus

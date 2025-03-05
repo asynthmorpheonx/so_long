@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_name_parser.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  mel-mouh < mel-mouh@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mel-mouh <mel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 10:23:00 by  mel-mouh         #+#    #+#             */
-/*   Updated: 2025/02/23 10:31:03 by  mel-mouh        ###   ########.fr       */
+/*   Updated: 2025/02/24 10:55:35 by mel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ static void	unsupported_file_handler(char *file_path)
 {
 	ft_putstr_fd("Error: Unsupported file format\n", 2);
 	ft_putstr_fd("The provided file ", 2);
-	write(1, "\"", 1);
+	ft_putstr_fd("\"", 2);
 	ft_putstr_fd(file_path, 2);
-	write(1, "\"", 1);
+	ft_putstr_fd("\"", 2);
 	ft_putstr_fd(" must have a '.ber' extension.\n", 2);
 	exit (1);
 }

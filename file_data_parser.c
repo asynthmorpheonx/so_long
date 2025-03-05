@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_data_parser.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  mel-mouh < mel-mouh@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mel-mouh <mel-mouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 13:56:46 by  mel-mouh         #+#    #+#             */
-/*   Updated: 2025/02/23 13:58:47 by  mel-mouh        ###   ########.fr       */
+/*   Updated: 2025/03/03 01:52:21 by mel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,52 @@ char **data_splited(char *data_file)
 {
 	char **data_splited;
 
+	if (!data_file)
+		return (NULL);
 	data_splited = ft_split(data_file, '\n');
+	check_newlines(data_file);
 	free(data_file);
 	return (data_splited);
+}
+
+void	check_newlines(char *map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		if (map[i] == '\n' && map[i + 1] == '\n')
+		{
+			map_validation_error();
+			free(map);
+			exit(1);
+		}
+		i++;
+	}
+}
+
+char	**the_parent_parser(int map_fd)
+{
+	char *map;
+	char **data;
+
+	map = data_file_parser(map_fd);
+	if (!map)
+	{
+		close(map_fd);
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Failed to read from file, ", 2);
+		ft_putstr_fd("Please ensure that the map file is valid and accessible.\n", 2);
+		exit(1);
+	}
+	data = data_splited(map);
+	if (!data)
+	{
+		close(map_fd);
+		perror("malloc :");
+		exit (1);
+	}
+	iterate_on_map(data, map_fd);
+	return (data);
 }
