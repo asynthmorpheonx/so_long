@@ -6,7 +6,7 @@
 /*   By: mel-mouh <mel-mouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 21:01:50 by  mel-mouh         #+#    #+#             */
-/*   Updated: 2025/03/05 17:13:34 by mel-mouh         ###   ########.fr       */
+/*   Updated: 2025/03/07 02:44:48 by mel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_element
 	int player;
 	int map_exit;
 	int others;
+	int	enemy;
 }	t_elements;
 
 typedef struct s_plate
@@ -63,8 +64,10 @@ typedef struct s_anime
 	void	*lframe;
 	void	*colictable[10];
 	void	*exit_hole[5];
+	void	*water_hole[9];
 	int		h_pos[2];
-	int		frame_index;
+	int		c_frame_index;
+	int		e_frame_index;
 }	t_anime;
 
 typedef struct s_box
@@ -87,7 +90,7 @@ char		**the_parent_parser(int map_fd);
 void		map_validation_error(void);
 void		check_newlines(char *map);
 void		check_for_elements(char **map);
-void		print_if_error(int i);
+// void		print_if_error(int i);
 int			check_element(char **map);
 t_player	*player();
 int			export_y(char **map);
@@ -107,5 +110,13 @@ void		iterate_for_render_colictables();
 void		start_clear();
 void	spawn_exit(int y, int x);
 void		set_exit();
+t_anime	*player_dir();
+char **mapdup(char **map);
+void    flood_fill(int x, int y, char **map);
+int    check_all_colictable(char **map);
+void	init_frames();
+void	spawn_drown_zone(int x, int y);
+void	print_if_error(int i, char **map);
+
 
 #endif

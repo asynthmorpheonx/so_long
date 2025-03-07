@@ -6,7 +6,7 @@
 /*   By: mel-mouh <mel-mouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 18:35:29 by mel-mouh          #+#    #+#             */
-/*   Updated: 2025/03/04 17:34:49 by mel-mouh         ###   ########.fr       */
+/*   Updated: 2025/03/07 02:55:04 by mel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_free(char **str)
 	free(str);
 }
 
-void	print_if_error(int i)
+void	print_if_error(int i, char **map)
 {
 	static int err;
 
@@ -42,34 +42,24 @@ void	print_if_error(int i)
 		ft_putstr_fd("The map must contain exactly one exit\n", 2);
 	else if (i == 3)
 		ft_putstr_fd("Invalid character found in the map\n", 2);
+	else if (i == 4)
+		ft_putstr_fd("The map must contain atleast one one enemy\n", 2);
+	ft_free(map);
+	exit(1);
 }
 
 int	check_element(char **map)
 {
 	if (!elements()->colictable)
-	{
-		ft_free(map);
-		print_if_error(0);
-		exit(1);
-	}
+		print_if_error(0, map);
 	if (elements()->map_exit != 1)
-	{
-		ft_free(map);
-		print_if_error(2);
-		exit(1);
-	}
+		print_if_error(2, map);
 	if (elements()->others != 0)
-	{
-		ft_free(map);
-		print_if_error(3);
-		exit(1);
-	}
+		print_if_error(3, map);
 	if (elements()->player != 1)
-	{
-		ft_free(map);
-		print_if_error(1);
-		exit(1);
-	}
+		print_if_error(1, map);
+	if (!elements()->enemy)
+		print_if_error(4, map);
 	return (1);
 }
 
@@ -94,6 +84,8 @@ void	check_for_elements(char **map)
 				elements()->colictable += 1;
 			else if (map[i][j] == 'E')
 				elements()->map_exit += 1;
+			else if (map[i][j] == 'X')
+				elements()->enemy += 1;
 			else if (map[i][j] != '1' && map[i][j] != '0')
 				elements()->others += 1;
 			j++;
@@ -101,4 +93,14 @@ void	check_for_elements(char **map)
 		i++;
 	}
 	check_element(map);
+}
+
+int	export_y(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+		i++;
+	return (i);
 }

@@ -1,5 +1,5 @@
-SRC= so_long.c file_name_parser.c file_data_parser.c iteration_nd_check.c \
-	iteration_help_utils.c
+SRC= flood_fill_check.c so_long.c file_name_parser.c file_data_parser.c iteration_nd_check.c \
+	iteration_help_utils.c box_realease.c box_initialize.c
 CC= cc
 CFLAGS= -Wall -Werror -Wextra  -Imlx_linux -g3
 NAME= so_long
