@@ -6,7 +6,7 @@
 /*   By: mel-mouh <mel-mouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 21:01:50 by  mel-mouh         #+#    #+#             */
-/*   Updated: 2025/03/07 02:44:48 by mel-mouh         ###   ########.fr       */
+/*   Updated: 2025/03/08 01:04:23 by mel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include "libft/libft.h"
+#include "ft_printf/ft_printf.h"
 #include <errno.h>
 
 #define ESC_CODE 65307
@@ -80,6 +81,12 @@ typedef struct s_box
 	int		width;
 }	t_box;
 
+typedef struct s_movement
+{
+	void	*nbrs[10];
+	int		move_count;
+}	t_movement;
+
 
 int			safer_open(char *file_path);
 char		**data_splited(char *data_file);
@@ -106,7 +113,7 @@ void		p_pos(int y, int x, int f_walk);
 void		spawn_colictables(int x, int y);
 void		set_colictables();
 t_elements	*elements();
-void		iterate_for_render_colictables();
+void		iterate_for_render();
 void		start_clear();
 void	spawn_exit(int y, int x);
 void		set_exit();
@@ -117,6 +124,6 @@ int    check_all_colictable(char **map);
 void	init_frames();
 void	spawn_drown_zone(int x, int y);
 void	print_if_error(int i, char **map);
-
+t_movement	*player_moves();
 
 #endif

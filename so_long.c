@@ -6,7 +6,7 @@
 /*   By: mel-mouh <mel-mouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 20:59:01 by  mel-mouh         #+#    #+#             */
-/*   Updated: 2025/03/07 03:17:24 by mel-mouh         ###   ########.fr       */
+/*   Updated: 2025/03/08 01:38:17 by mel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,30 +89,47 @@ int	update_player_pos(int kcode)
 	{
 		mlx_destroy_window(box()->mlx, box()->win);
 		start_clear();
+		ft_printf("you quite the game bae\n");
 		exit(0);
 	}
 	else if (D_CLICK == kcode)
 	{
 		if (box()->map[player()->updated_y][player()->updated_x + 1] != '1')
+		{
+			player_moves()->move_count++;
+			ft_printf("move count: %d\n", player_moves()->move_count);
 			p_pos(player()->updated_y, ++player()->updated_x, 1);
+		}
 		box()->p_status = player_dir()->rframe;
 	}
 	else if (A_CLICK == kcode)
 	{
 		if (box()->map[player()->updated_y][player()->updated_x - 1] != '1')
+		{
+			player_moves()->move_count++;
+			ft_printf("move count: %d\n", player_moves()->move_count);
 			p_pos(player()->updated_y, --player()->updated_x, 1);
+		}
 		box()->p_status = player_dir()->lframe;
 	}
 	else if (W_CLICK == kcode)
 	{
 		if (box()->map[player()->updated_y - 1][player()->updated_x] != '1')
+		{
+			player_moves()->move_count++;
+			ft_printf("move count: %d\n", player_moves()->move_count);
 			p_pos(--player()->updated_y, player()->updated_x, 1);
+		}
 		box()->p_status = player_dir()->tframe;
 	}
 	else if (S_CLICK == kcode)
 	{
 		if (box()->map[player()->updated_y + 1][player()->updated_x] != '1')
+		{
+			player_moves()->move_count++;
+			ft_printf("move count: %d\n", player_moves()->move_count);
 			p_pos(++player()->updated_y, player()->updated_x, 1);
+		}
 		box()->p_status = player_dir()->lframe;
 	}
 	if (box()->map[player()->updated_y][player()->updated_x] == 'C')
@@ -124,6 +141,7 @@ int	update_player_pos(int kcode)
 	{
 		mlx_destroy_window(box()->mlx, box()->win);
 		start_clear();
+		ft_printf("you're dead\n");
 		exit(0);
 	}
 	player()->flage_walk = 1;
@@ -137,6 +155,14 @@ void	p_pos(int y, int x, int f_walk)
 	player()->flage_walk = f_walk;
 }
 
+void	render_count_move()
+{
+	mlx_put_image_to_window(box()->mlx, box()->win, player_moves()->nbrs[player_moves()->move_count % 10], 3 * 32, 0);
+	mlx_put_image_to_window(box()->mlx, box()->win, player_moves()->nbrs[(player_moves()->move_count / 10) % 10], 2 * 32, 0);
+	mlx_put_image_to_window(box()->mlx, box()->win, player_moves()->nbrs[(player_moves()->move_count / 100) % 10], 1 * 32, 0);
+	mlx_put_image_to_window(box()->mlx, box()->win, player_moves()->nbrs[(player_moves()->move_count / 1000) % 10], 0, 0);
+}
+
 int	update_frame(void)
 {
 	static unsigned int curr_frame;
@@ -144,6 +170,7 @@ int	update_frame(void)
 
 	if (curr_frame % 4100 == 0)
 	{
+		render_count_move();
 		if (elements()->colictable == 0)
 		{
 			if (i < 5)
@@ -158,7 +185,7 @@ int	update_frame(void)
 		player()->x = player()->updated_x;
 		player()->y = player()->updated_y;
 		player()->flage_walk = 0;
-		iterate_for_render_colictables();
+		iterate_for_render();
 	}
 	curr_frame++;
 	if (box()->map[player()->updated_y][player()->updated_x] == 'E' && elements()->colictable == 0)
@@ -170,7 +197,7 @@ int	update_frame(void)
 	return (0);
 }
 
-void	iterate_for_render_colictables(void)
+void	iterate_for_render(void)
 {
 	int	i;
 	int	j;
@@ -260,6 +287,22 @@ void	start_clear()
 	free(box()->mlx);
 }
 
+void	move_counter_seter(void)
+{
+	int garbage;
+
+	player_moves()->nbrs[0] = mlx_xpm_file_to_image(box()->mlx, "./textures/n0.xpm", &garbage, &garbage);
+	player_moves()->nbrs[1] = mlx_xpm_file_to_image(box()->mlx, "./textures/n1.xpm", &garbage, &garbage);
+	player_moves()->nbrs[2] = mlx_xpm_file_to_image(box()->mlx, "./textures/n2.xpm", &garbage, &garbage);
+	player_moves()->nbrs[3] = mlx_xpm_file_to_image(box()->mlx, "./textures/n3.xpm", &garbage, &garbage);
+	player_moves()->nbrs[4] = mlx_xpm_file_to_image(box()->mlx, "./textures/n4.xpm", &garbage, &garbage);
+	player_moves()->nbrs[5] = mlx_xpm_file_to_image(box()->mlx, "./textures/n5.xpm", &garbage, &garbage);
+	player_moves()->nbrs[6] = mlx_xpm_file_to_image(box()->mlx, "./textures/n6.xpm", &garbage, &garbage);
+	player_moves()->nbrs[7] = mlx_xpm_file_to_image(box()->mlx, "./textures/n7.xpm", &garbage, &garbage);
+	player_moves()->nbrs[8] = mlx_xpm_file_to_image(box()->mlx, "./textures/n8.xpm", &garbage, &garbage);
+	player_moves()->nbrs[9] = mlx_xpm_file_to_image(box()->mlx, "./textures/n9.xpm", &garbage, &garbage);
+}
+
 int main(int ac, char **av)
 {
 	int		fd;
@@ -280,6 +323,9 @@ int main(int ac, char **av)
 		return (1);
 	}
 	init_th_box(data_file);
+	player_moves();
+	move_counter_seter();
+	player_moves()->move_count = 0;
 	set_colictables();
 	init_danger_positions();
 	set_exit();
@@ -288,7 +334,7 @@ int main(int ac, char **av)
 	fill_th_ocean();
 	render_platform();
 	mlx_loop_hook(box()->mlx, update_frame, NULL);
-	mlx_hook(box()->win, 2, 1L<<0, update_player_pos, NULL);
+	mlx_key_hook(box()->win, update_player_pos, NULL);
 	mlx_loop(box()->mlx);
 	return (0);
 }

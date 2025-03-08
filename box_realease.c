@@ -6,7 +6,7 @@
 /*   By: mel-mouh <mel-mouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 00:03:43 by mel-mouh          #+#    #+#             */
-/*   Updated: 2025/03/06 00:06:34 by mel-mouh         ###   ########.fr       */
+/*   Updated: 2025/03/07 18:17:03 by mel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,28 @@ t_player	*player()
 
 t_box	*box()
 {
-	static t_box	box;
+	static t_box	pp;
 	
-	return(&box);
+	return(&pp);
 }
 
 t_plate	*wall()
 {
-	static t_plate plate;
+	static t_plate pp;
 	
-	return (&plate);
+	return (&pp);
 }
 
 t_anime	*player_dir()
 {
 	static	t_anime pp;
 	
+	return (&pp);
+}
+
+t_movement	*player_moves()
+{
+	static	t_movement pp;
+
 	return (&pp);
 }

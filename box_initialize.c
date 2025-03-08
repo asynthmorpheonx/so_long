@@ -6,7 +6,7 @@
 /*   By: mel-mouh <mel-mouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 00:11:01 by mel-mouh          #+#    #+#             */
-/*   Updated: 2025/03/06 00:11:25 by mel-mouh         ###   ########.fr       */
+/*   Updated: 2025/03/08 00:39:14 by mel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	init_th_box(char **map)
 	box()->map = map;
 	box()->mlx = mlx_init();
 	box()->width = ft_strlen(map[0]) * 32;
+	if (box()->width <= 96)
+		box()->width += 32;
 	box()->hight = export_y(map) * 32 + 32;
 	box()->win = mlx_new_window(box()->mlx, box()->width, box()->hight, "so_long");
 }
