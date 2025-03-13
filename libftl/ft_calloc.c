@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-mouh <mel-mouh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mel-mouh <mel-mouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/18 23:10:38 by mel-mouh          #+#    #+#             */
-/*   Updated: 2024/11/20 12:21:49 by mel-mouh         ###   ########.fr       */
+/*   Created: 2024/10/26 21:24:48 by mel-mouh          #+#    #+#             */
+/*   Updated: 2024/12/24 17:40:42 by mel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putchar(char c)
+void	*ft_calloc(size_t count, size_t size)
 {
-	return (write (1, &c, 1));
+	char	*arr;
+
+	arr = malloc(count * size);
+	if (arr == NULL)
+		return (NULL);
+	ft_bzero(arr, count * size);
+	return (arr);
 }

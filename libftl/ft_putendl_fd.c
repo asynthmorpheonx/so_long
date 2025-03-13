@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbrhex.c                                     :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-mouh <mel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/18 19:09:24 by mel-mouh          #+#    #+#             */
-/*   Updated: 2024/11/20 12:21:45 by mel-mouh         ###   ########.fr       */
+/*   Created: 2024/11/01 18:37:25 by mel-mouh          #+#    #+#             */
+/*   Updated: 2024/11/08 11:43:19 by mel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putnbr_hex(unsigned long int n, char	*hexa)
+void	ft_putendl_fd(char *s, int fd)
 {
-	char	buffer[16];
-	int		i;
-	int		count;
+	size_t	i;
 
-	if (n == 0)
-		return (write(1, "0", 1));
 	i = 0;
-	while (n > 0)
+	if (s == NULL || fd < 0)
+		return ;
+	while (s[i] != '\0')
 	{
-		buffer[i++] = hexa[n % 16];
-		n /= 16;
+		write(fd, &s[i], 1);
+		i++;
 	}
-	count = i;
-	while (i > 0)
-		ft_putchar(buffer[--i]);
-	return (count);
+	write(fd, "\n", 1);
 }

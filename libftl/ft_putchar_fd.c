@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putaddres.c                                     :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-mouh <mel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/18 19:32:03 by mel-mouh          #+#    #+#             */
-/*   Updated: 2024/11/20 12:22:02 by mel-mouh         ###   ########.fr       */
+/*   Created: 2024/10/31 16:48:03 by mel-mouh          #+#    #+#             */
+/*   Updated: 2024/11/08 11:43:00 by mel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putaddres(unsigned long int addr)
+void	ft_putchar_fd(char c, int fd)
 {
-	int	count;
-
-	count = 0;
-	if (addr == 0)
-		return (ft_putstr("(nil)"));
-	count += ft_putstr("0x");
-	count += ft_putnbr_hex(addr, "0123456789abcdef");
-	return (count);
+	if (fd < 0)
+		return ;
+	write(fd, &c, 1);
 }

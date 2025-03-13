@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-mouh <mel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/18 19:08:39 by mel-mouh          #+#    #+#             */
-/*   Updated: 2024/11/20 12:21:43 by mel-mouh         ###   ########.fr       */
+/*   Created: 2024/10/23 16:57:49 by mel-mouh          #+#    #+#             */
+/*   Updated: 2024/11/06 17:06:58 by mel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putstr(char *s)
+int	ft_isprint(int c)
 {
-	size_t	i;
-
-	i = 0;
-	if (s == NULL)
-		return (ft_putstr("(null)"));
-	while (s[i] != '\0')
-	{
-		write(1, &s[i], 1);
-		i++;
-	}
-	return (i);
+	if (c >= 32 && c <= 126)
+		return (1);
+	return (0);
 }
