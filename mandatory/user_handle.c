@@ -6,7 +6,7 @@
 /*   By: mel-mouh <mel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 21:33:11 by mel-mouh          #+#    #+#             */
-/*   Updated: 2025/03/10 22:16:38 by mel-mouh         ###   ########.fr       */
+/*   Updated: 2025/03/13 21:02:49 by mel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,7 @@ int	update_frame(void)
 	curr_frame++;
 	if (box()->map[player()->updated_y][player()->updated_x] == 'E'
 		&& elements()->colictable == 0)
-	{
-		mlx_destroy_window(box()->mlx, box()->win);
 		start_clear(0);
-		exit(0);
-	}
 	return (0);
 }
 

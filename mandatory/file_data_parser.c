@@ -6,7 +6,7 @@
 /*   By: mel-mouh <mel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 13:56:46 by  mel-mouh         #+#    #+#             */
-/*   Updated: 2025/03/10 21:05:56 by mel-mouh         ###   ########.fr       */
+/*   Updated: 2025/03/13 20:55:10 by mel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*data_file_parser(int fd)
 	temp = NULL;
 	while (line)
 	{
-		temp = ft_gnlstrjoin(temp, line);
+		temp = ft_gnl_strjoin(temp, line);
 		free(line);
 		line = get_next_line(fd);
 	}
