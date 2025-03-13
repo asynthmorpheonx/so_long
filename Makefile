@@ -9,7 +9,7 @@ BSRC= bonus/flood_fill_check.c bonus/so_long.c bonus/file_name_parser.c bonus/fi
 OBJ= $(SRC:.c=.o)
 BOBJ= $(BSRC:.c=.o)
 CC= cc
-CFLAGS= -Wall -Werror -Wextra  -Imlx_linux -g3
+CFLAGS= -Wall -Werror -Wextra -Imlx_linux -g3
 NAME= libs/libmlong.a
 BNAME= libs/libblong.a
 PRNAME= so_long
@@ -24,8 +24,8 @@ $(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)
 
 $(LIBFT):
-	make -C ft_printf
-	make -C libft bonus
+	make -C so_printf
+	make -C so_libft bonus
 
 bonus: $(BNAME) 
 	$(CC) $(CFLAGS) $(BNAME) -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -Llibs -lft -lftprintf -o $(PRNAME)
@@ -38,18 +38,18 @@ $(BNAME): $(BOBJ) $(LIBFT)
 
 clean:
 	rm -rf $(OBJ) $(BOBJ)
-	make -C libft clean
-	make -C ft_printf clean
+	make -C so_libft clean
+	make -C so_printf clean
 
 fclean: clean
-	make -C libft fclean
-	make -C ft_printf fclean
+	make -C so_libft fclean
+	make -C so_printf fclean
 	rm -rf $(NAME) $(BNAME)
 	rm -rf $(PRNAME)
 
 re: fclean all
-	make -C libft re 
-	make -C ft_printf re 
+	make -C so_libft re 
+	make -C so_printf re 
 
 .PHONY: clean fclean re
 

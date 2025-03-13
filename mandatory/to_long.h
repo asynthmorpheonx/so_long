@@ -6,7 +6,7 @@
 /*   By: mel-mouh <mel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 21:01:50 by  mel-mouh         #+#    #+#             */
-/*   Updated: 2025/03/11 01:01:29 by mel-mouh         ###   ########.fr       */
+/*   Updated: 2025/03/13 21:17:02 by mel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <errno.h>
-# include "../libft/libft.h"
-# include "../ft_printf/ft_printf.h"
+# include "../so_libft/libft.h"
+# include "../so_printf/ft_printf.h"
 
 # define ESC_CODE 65307
 # define D_CLICK 100

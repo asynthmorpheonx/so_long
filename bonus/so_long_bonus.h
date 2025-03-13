@@ -6,7 +6,7 @@
 /*   By: mel-mouh <mel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 21:01:50 by  mel-mouh         #+#    #+#             */
-/*   Updated: 2025/03/13 02:00:05 by mel-mouh         ###   ########.fr       */
+/*   Updated: 2025/03/13 21:17:32 by mel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
-# include "../libft/libft.h"
-# include "../ft_printf/ft_printf.h"
+# include "../so_libft/libft.h"
+# include "../so_printf/ft_printf.h"
 # include <errno.h>
 
 # define ESC_CODE 65307
