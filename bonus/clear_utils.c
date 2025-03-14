@@ -6,7 +6,7 @@
 /*   By: mel-mouh <mel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 21:17:25 by mel-mouh          #+#    #+#             */
-/*   Updated: 2025/03/13 00:32:33 by mel-mouh         ###   ########.fr       */
+/*   Updated: 2025/03/14 20:01:31 by mel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,37 +62,35 @@ void	destroy_animations(void)
 	{
 		if (player_dir()->exit_hole[i])
 			mlx_destroy_image(box()->mlx,
-				player_dir()->exit_hole[i ++]);
+				player_dir()->exit_hole[i]);
+		i++;
 	}
 	i = 0;
 	while (i < 10)
 	{
 		if (player_dir()->colictable[i])
 			mlx_destroy_image(box()->mlx,
-				player_dir()->colictable[i++]);
-	}
-	i = 0;
-	while (i < 10)
-	{
+				player_dir()->colictable[i]);
 		if (player_moves()->nbrs[i])
 			mlx_destroy_image(box()->mlx,
-				player_moves()->nbrs[i++]);
+				player_moves()->nbrs[i]);
+		i++;
 	}
 }
 
 void	start_clear(int z)
 {
-	destroy_wall();
-	destroy_game_content();
-	destroy_animations();
 	if (box()->map)
 		ft_free(box()->map);
 	if (box()->win)
 		mlx_destroy_window(box()->mlx, box()->win);
+	destroy_wall();
+	destroy_game_content();
+	destroy_animations();
 	if (player()->enemy_xp)
-		free(player()->enemy_xp);
+	free(player()->enemy_xp);
 	if (player()->enemy_yp)
-		free(player()->enemy_yp);
+	free(player()->enemy_yp);
 	if (box()->mlx)
 	{
 		mlx_destroy_display(box()->mlx);

@@ -6,7 +6,7 @@
 /*   By: mel-mouh <mel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 20:19:02 by mel-mouh          #+#    #+#             */
-/*   Updated: 2025/03/13 00:32:33 by mel-mouh         ###   ########.fr       */
+/*   Updated: 2025/03/14 19:54:39 by mel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	check_colictables(void)
 	i = 0;
 	while (i <= 9)
 	{
-		if (!((player_dir()->colictable)[i]))
+		if (!(player_dir()->colictable)[i])
 		{
 			ft_putstr_fd("Error\n", 2);
 			start_clear(1);
@@ -57,7 +57,7 @@ void	check_exits(void)
 	i = 0;
 	while (i <= 4)
 	{
-		if (!((player_dir()->exit_hole)[i]))
+		if (!(player_dir()->exit_hole)[i])
 		{
 			ft_putstr_fd("Error\n", 2);
 			start_clear(1);
@@ -73,8 +73,11 @@ void	check_counter(void)
 	i = 0;
 	while (i <= 9)
 	{
-		if (!((player_moves()->nbrs)[i]))
+		if (!(player_moves()->nbrs)[i])
+		{
+			ft_putendl_fd("Error\n", 2);
 			start_clear(1);
+		}
 		i++;
 	}
 }

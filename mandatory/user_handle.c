@@ -6,7 +6,7 @@
 /*   By: mel-mouh <mel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 21:33:11 by mel-mouh          #+#    #+#             */
-/*   Updated: 2025/03/13 21:02:49 by mel-mouh         ###   ########.fr       */
+/*   Updated: 2025/03/14 02:00:02 by mel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	check_coin(void)
 	if (box()->map[player()->updated_y][player()->updated_x] == 'C')
 	{
 		box()->map[player()->updated_y][player()->updated_x] = '0';
+		mlx_put_image_to_window(box()->mlx, box()->win, wall()->floor,
+			player()->updated_x * 32 + 2, player()->updated_y * 32 + 4);
 		elements()->colictable--;
 	}
 }

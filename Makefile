@@ -18,7 +18,7 @@ LIBFT= libs/libft.a libs/libftprintf.a
 all: $(PRNAME)
 
 $(PRNAME): $(NAME) $(LIBFT) 
-	$(CC) $(CFLAGS) $(NAME) -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -Llibs -lft -lftprintf -o $(PRNAME)
+	$(CC) $(CFLAGS) $(NAME) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -Llibs -lft -lftprintf -o $(PRNAME)
 
 $(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)
@@ -28,7 +28,7 @@ $(LIBFT):
 	make -C so_libft bonus
 
 bonus: $(BNAME) 
-	$(CC) $(CFLAGS) $(BNAME) -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -Llibs -lft -lftprintf -o $(PRNAME)
+	$(CC) $(CFLAGS) $(BNAME) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -Llibs -lft -lftprintf -o $(PRNAME)
 
 $(BNAME): $(BOBJ) $(LIBFT) 
 	ar rcs $(BNAME) $(BOBJ)

@@ -6,7 +6,7 @@
 /*   By: mel-mouh <mel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 13:56:46 by  mel-mouh         #+#    #+#             */
-/*   Updated: 2025/03/13 20:54:49 by mel-mouh         ###   ########.fr       */
+/*   Updated: 2025/03/14 01:46:40 by mel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,8 @@ char	**data_splited(char *data_file)
 {
 	char	**data_splited;
 
-	if (!data_file)
-		return (NULL);
-	data_splited = ft_split(data_file, '\n');
 	check_newlines(data_file);
+	data_splited = ft_split(data_file, '\n');
 	free(data_file);
 	return (data_splited);
 }
@@ -75,7 +73,7 @@ char	**the_parent_parser(int map_fd)
 	data = data_splited(map);
 	if (!data)
 	{
-		perror("Error\nmalloc :");
+		perror("Error\n:");
 		exit (1);
 	}
 	iterate_on_map(data, map_fd);

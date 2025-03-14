@@ -6,7 +6,7 @@
 /*   By: mel-mouh <mel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 20:59:01 by  mel-mouh         #+#    #+#             */
-/*   Updated: 2025/03/13 00:18:53 by mel-mouh         ###   ########.fr       */
+/*   Updated: 2025/03/14 00:41:58 by mel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int ac, char **av)
 	char	**data_file;
 	char	**dup;
 
-	if (ac < 2)
+	if (ac != 2)
 		return (ft_putendl_fd
 			("syntax error: ./so_long <path/to/file/map>", 2), 1);
 	fd = safer_open(av[1]);

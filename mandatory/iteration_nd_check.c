@@ -6,7 +6,7 @@
 /*   By: mel-mouh <mel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 15:32:18 by  mel-mouh         #+#    #+#             */
-/*   Updated: 2025/03/10 21:12:03 by mel-mouh         ###   ########.fr       */
+/*   Updated: 2025/03/14 00:57:26 by mel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	check_walls(char *data_map, int j, int map_size)
 	int	i;
 
 	i = 0;
-	if (j == 0 || j == map_size)
+	if (j == 0 || j == map_size - 1)
 	{
 		while (data_map[i])
 		{
