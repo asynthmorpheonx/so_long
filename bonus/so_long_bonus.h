@@ -6,14 +6,13 @@
 /*   By: mel-mouh <mel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 21:01:50 by  mel-mouh         #+#    #+#             */
-/*   Updated: 2025/03/13 21:17:32 by mel-mouh         ###   ########.fr       */
+/*   Updated: 2025/03/14 21:15:57 by mel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_BONUS_H
 # define SO_LONG_BONUS_H
 
-# include <stdio.h>
 # include <mlx.h>
 # include <unistd.h>
 # include <fcntl.h>
