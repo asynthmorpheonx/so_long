@@ -2,10 +2,11 @@ SRC= mandatory/flood_fill_check.c mandatory/so_long.c mandatory/file_name_parser
 	mandatory/file_data_parser.c mandatory/iteration_nd_check.c mandatory/iteration_help_utils.c\
 	mandatory/box_realease.c mandatory/box_initialize.c mandatory/destroy_nd_clear.c mandatory/render_utils.c\
 	mandatory/user_handle.c
-BSRC= bonus/flood_fill_check.c bonus/so_long.c bonus/file_name_parser.c bonus/file_data_parser.c bonus/iteration_nd_check.c \
-	bonus/iteration_help_utils.c bonus/box_realease.c bonus/box_initialize.c bonus/render_per_call.c\
-	bonus/rendering_loop_utils.c bonus/rendering_utils.c bonus/check_boxes.c bonus/clear_utils.c bonus/updating_nd_redraw.c\
-	bonus/rendering_utils.c bonus/init_count_nd_enemy.c bonus/so_long_utils.c
+BSRC= bonus/box_initialize_bonus.c bonus/file_data_parser_bonus.c bonus/iteration_help_utils_bonus.c bonus/render_per_call_bonus.c\
+	bonus/box_realese_bonus.c bonus/file_name_parser_bonus.c bonus/iteration_nd_check_bonus.c bonus/so_long_bonus.c\
+	bonus/check_boxes_bonus.c bonus/flood_fill_check_bonus.c bonus/rendering_loop_utils_bonus.c bonus/so_long_utils_bonus.c\
+	bonus/clear_utils_bonus.c bonus/init_count_nd_enemy_bonus.c bonus/rendering_utils_bonus.c bonus/updating_nd_redraw_bonus.c\
+	bonus/clear_utils_bonus.c
 OBJ= $(SRC:.c=.o)
 BOBJ= $(BSRC:.c=.o)
 CC= cc
