@@ -6,7 +6,7 @@
 /*   By: mel-mouh <mel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 21:33:11 by mel-mouh          #+#    #+#             */
-/*   Updated: 2025/03/14 23:46:16 by mel-mouh         ###   ########.fr       */
+/*   Updated: 2025/03/14 23:50:58 by mel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ int	update_frame(void)
 {
 	static unsigned int	curr_frame;
 
-	if (curr_frame % 4100 == 0)
+	if (curr_frame % 3200 == 0)
 	{
-		show_exit();
+		showw_exit();
 		if (player()->flage_walk == 1)
 			mlx_put_image_to_window(box()->mlx, box()->win, wall()->floor,
 				player()->x * 32 + 2, player()->y * 32 + 4);
@@ -78,10 +78,10 @@ int	update_frame(void)
 	curr_frame++;
 	if (box()->map[player()->updated_y][player()->updated_x] == 'E'
 		&& elements()->colictable == 0)
-		{
-			ft_printf("You Win\n");
-			start_clear(0);
-		}
+	{
+		ft_printf("You Win\n");
+		start_clear(0);
+	}
 	return (0);
 }
 
