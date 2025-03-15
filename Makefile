@@ -16,12 +16,14 @@ CFLAGS= -Wall -Werror -Wextra -Imlx_linux -g3
 NAME= libs/libmlong.a
 BNAME= libs/libblong.a
 PRNAME= so_long
+BPNAME= so_long_bonus
 LIBFT= libs/libft.a
 LIBFTP= libs/libftprintf.a
+L_DIR= libs/
 
 all: $(PRNAME)
 
-$(PRNAME): $(NAME)
+$(PRNAME): $(L_DIR) $(NAME) 
 	$(CC) $(CFLAGS) $(NAME) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -Llibs -lft -lftprintf -o $(PRNAME)
 
 $(NAME): $(OBJ) $(LIBFT) $(LIBFTP)
@@ -33,14 +35,19 @@ $(LIBFT):
 $(LIBFTP):
 	make -C so_printf
 
-bonus: $(BNAME)
-	$(CC) $(CFLAGS) $(BNAME) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -Llibs -lft -lftprintf -o $(PRNAME)
+bonus: $(BPNAME)
+
+$(BPNAME): $(L_DIR) $(BNAME)
+	$(CC) $(CFLAGS) $(BNAME) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -Llibs -lft -lftprintf -o $(BPNAME)
 
 $(BNAME): $(BOBJ) $(LIBFT) $(LIBFTP)
 	ar rcs $(BNAME) $(BOBJ)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
+
+$(L_DIR):
+	mkdir libs
 
 clean:
 	rm -rf $(OBJ) $(BOBJ)
@@ -51,7 +58,7 @@ fclean: clean
 	make -C so_libft fclean
 	make -C so_printf fclean
 	rm -rf $(NAME) $(BNAME)
-	rm -rf $(PRNAME)
+	rm -rf $(PRNAME) $(BPNAME)
 
 re: fclean all
 	make -C so_libft re 
@@ -59,4 +66,4 @@ re: fclean all
 
 .PHONY: clean fclean re
 
-.SECONDARY: $(LIBFT)
+.SECONDARY: $(LIBFT) $(LIBFTP) $(BNAME) $(NAME) $(OBJ) $(BOBJ)
