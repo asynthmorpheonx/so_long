@@ -7,6 +7,8 @@ BSRC= bonus/box_initialize_bonus.c bonus/file_data_parser_bonus.c bonus/iteratio
 	bonus/check_boxes_bonus.c bonus/flood_fill_check_bonus.c bonus/rendering_loop_utils_bonus.c bonus/so_long_utils_bonus.c\
 	bonus/clear_utils_bonus.c bonus/init_count_nd_enemy_bonus.c bonus/rendering_utils_bonus.c bonus/updating_nd_redraw_bonus.c\
 	bonus/clear_utils_bonus.c
+
+
 OBJ= $(SRC:.c=.o)
 BOBJ= $(BSRC:.c=.o)
 CC= cc
@@ -14,24 +16,27 @@ CFLAGS= -Wall -Werror -Wextra -Imlx_linux -g3
 NAME= libs/libmlong.a
 BNAME= libs/libblong.a
 PRNAME= so_long
-LIBFT= libs/libft.a libs/libftprintf.a
+LIBFT= libs/libft.a
+LIBFTP= libs/libftprintf.a
 
 all: $(PRNAME)
 
-$(PRNAME): $(NAME) $(LIBFT) 
+$(PRNAME): $(NAME)
 	$(CC) $(CFLAGS) $(NAME) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -Llibs -lft -lftprintf -o $(PRNAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(LIBFT) $(LIBFTP)
 	ar rcs $(NAME) $(OBJ)
 
 $(LIBFT):
-	make -C so_printf
 	make -C so_libft bonus
 
-bonus: $(BNAME) 
+$(LIBFTP):
+	make -C so_printf
+
+bonus: $(BNAME)
 	$(CC) $(CFLAGS) $(BNAME) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -Llibs -lft -lftprintf -o $(PRNAME)
 
-$(BNAME): $(BOBJ) $(LIBFT) 
+$(BNAME): $(BOBJ) $(LIBFT) $(LIBFTP)
 	ar rcs $(BNAME) $(BOBJ)
 
 %.o: %.c
