@@ -6,7 +6,7 @@
 /*   By: mel-mouh <mel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 10:23:00 by  mel-mouh         #+#    #+#             */
-/*   Updated: 2025/03/10 21:06:25 by mel-mouh         ###   ########.fr       */
+/*   Updated: 2025/03/15 00:04:22 by mel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ int	safer_open(char *file_path)
 {
 	int	fd;
 
-	if (ft_strncmp(file_path + extract_th_extension(file_path), ".ber", 4))
+	if (ft_strncmp(file_path + extract_th_extension(file_path), ".ber", 4)
+		|| file_path[extract_th_extension(file_path) - 1] == '/'
+		|| extract_th_extension(file_path) == 0)
 		unsupported_file_handler(file_path);
 	fd = open(file_path, O_RDONLY);
 	if (fd == -1)

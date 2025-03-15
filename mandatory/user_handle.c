@@ -6,7 +6,7 @@
 /*   By: mel-mouh <mel-mouh@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 21:33:11 by mel-mouh          #+#    #+#             */
-/*   Updated: 2025/03/14 23:50:58 by mel-mouh         ###   ########.fr       */
+/*   Updated: 2025/03/14 23:53:55 by mel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	update_frame(void)
 
 	if (curr_frame % 3200 == 0)
 	{
-		showw_exit();
+		show_exit();
 		if (player()->flage_walk == 1)
 			mlx_put_image_to_window(box()->mlx, box()->win, wall()->floor,
 				player()->x * 32 + 2, player()->y * 32 + 4);
